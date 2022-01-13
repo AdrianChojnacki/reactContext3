@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { AppContext, defaultObject } from './AppContent';
 import UserInfo from './UserInfo';
+import Button from './Button';
 import './App.css';
 
 class App extends PureComponent {
@@ -20,6 +21,7 @@ class App extends PureComponent {
           toggleLoggedState: this.handleToggleStateIsLogged
         }}>
           <UserInfo />
+          <Button />
         </AppContext.Provider>
       </div>
     );
