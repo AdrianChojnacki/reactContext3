@@ -1,7 +1,10 @@
 import React, { PureComponent } from 'react';
-import { AppContext, defaultObject } from './AppContent';
+
 import UserInfo from './UserInfo';
 import Button from './Button';
+
+import { AppContext, defaultObject } from './AppContent';
+
 import './App.css';
 
 class App extends PureComponent {
@@ -9,9 +12,9 @@ class App extends PureComponent {
     isUserLogged: defaultObject.isUserLogged,
   }
 
-  handleToggleStateIsLogged = () => this.setState({
-    isUserLogged: !this.state.isUserLogged
-  });
+  handleToggleStateIsLogged = () => this.setState(prevState => ({
+    isUserLogged: !prevState.isUserLogged
+  }));
 
   render() {
     return (

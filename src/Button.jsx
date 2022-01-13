@@ -4,13 +4,17 @@ import { AppContext } from "./AppContent";
 class Button extends PureComponent {
   render() {
     return (
-      <AppContext>
+      <AppContext.Consumer>
         {
           ({ toggleLoggedState }) => (
-            <button onClick={toggleLoggedState}>Przełącz stan użytkownika</button>
+            <button
+              onClick={toggleLoggedState}
+            >
+              Przełącz stan użytkownika
+            </button>
           )
         }
-      </AppContext>
+      </AppContext.Consumer>
     );
   }
 }
