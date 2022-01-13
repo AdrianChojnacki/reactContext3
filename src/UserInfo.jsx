@@ -4,9 +4,16 @@ import { AppContext } from './AppContent';
 class UserInfo extends PureComponent {
   render() {
     return (
-      <div>
-        <p>Użytkownik jest ...</p>
-      </div>
+      <AppContext.Consumer>
+        {
+          ({ isUserLogged }) => (
+            <div>
+              {console.log(isUserLogged)}
+              <p>Użytkownik jest {isUserLogged ? 'zalogowany' : 'niezalogowany'}</p>
+            </div>
+          )
+        }
+      </AppContext.Consumer>
     );
   }
 }
