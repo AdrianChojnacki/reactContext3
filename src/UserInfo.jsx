@@ -6,7 +6,9 @@ class UserInfo extends PureComponent {
 
   render() {
     const { isUserLogged } = this.context;
-    const userLoggeInfo = isUserLogged ? 'zalogowany' : 'niezalogowany';
+    const userLoggeInfo = isUserLogged
+      ? 'zalogowany'
+      : 'niezalogowany';
 
     return (
       <div>
