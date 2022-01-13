@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import React, { PureComponent } from 'react';
+import { AppContext, defaultObject } from './AppContent';
+import UserInfo from './UserInfo';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends PureComponent {
+  state = {
+    isUserLogged: defaultObject.isUserLogged,
+  }
+
+  handleToggleStateIsLogged = () => this.setState({
+    isUserLogged: !this.state.isUserLogged
+  });
+
+  render() {
+    return (
+      <div>
+        <AppContext.Provider value={{
+          isUserLogged: this.state.isUserLogged,
+          toggleLoggedState: this.handleToggleStateIsLogged
+        }}>
+          <UserInfo />
+        </AppContext.Provider>
+      </div>
+    );
+  }
 }
 
 export default App;
