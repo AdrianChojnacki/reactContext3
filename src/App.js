@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { useState } from 'react';
 
 import UserInfo from './UserInfo';
 import Button from './Button';
@@ -7,35 +7,25 @@ import { AppContext, defaultObject } from './AppContent';
 
 import './App.css';
 
-class App extends PureComponent {
-  state = {
-    isUserLogged: defaultObject.isUserLogged,
-    isUserAdult: true,
-  }
+const App = () => {
+  const [isUserLogged, setIsUserLogged] = useState(defaultObject.isUserLogged);
+  const [isUserAdult, setIsUserAdult] = useState(true);
 
-  handleToggleStateIsLogged = () => this.setState(prevState => ({
-    isUserLogged: !prevState.isUserLogged,
-  }));
+  const toggleLoggedState = () => setIsUserLogged(prevValue => !prevValue);
+  const toggleAdultState = () => setIsUserAdult(prevValue => !prevValue);
 
-  handleToggleStateIsAdult = () => this.setState(prevState => ({
-    isUserAdult: !prevState.isUserAdult,
-  }));
-
-  render() {
-    return (
-      <div>
+  return (
+    <div>
+      <AppContext.Provider value={{ isUserLogged, toggleLoggedState }}>
         <UserInfo />
         <Button />
-        <AppContext.Provider value={{
-          isUserLogged: this.state.isUserAdult,
-          toggleLoggedState: this.handleToggleStateIsAdult
-        }}>
-          <UserInfo />
-          <Button />
-        </AppContext.Provider>
-      </div>
-    );
-  }
+      </AppContext.Provider>
+      <AppContext.Provider value={{ isUserAdult, toggleAdultState }}>
+        <UserInfo />
+        <Button />
+      </AppContext.Provider>
+    </div>
+  );
 }
 
 export default App;
