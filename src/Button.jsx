@@ -5,9 +5,7 @@ const Button = () => {
   const { toggleLoggedState } = useContext(AppContext);
 
   return (
-    <button
-      onClick={toggleLoggedState}
-    >
+    <button onClick={toggleLoggedState}>
       Przełącz stan użytkownika
     </button>
   );
