@@ -1,8 +1,13 @@
 import { createContext } from 'react';
 
-export const defaultObject = {
-  isUserLogged: false,
-  toggleLoggedState: () => console.log('Domyślny Provider'),
-}
+const AppContext = createContext(defaultObject);
 
-export const AppContext = createContext(defaultObject);
+const AppProvider = ({ children }) => {
+  returt (
+    <AppContext.Provider>
+      {children}
+    </AppContext.Provider>
+  )
+};
+
+export default AppProvider;
