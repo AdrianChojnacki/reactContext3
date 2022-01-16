@@ -1,13 +1,13 @@
-import { createContext } from 'react';
+import React, { createContext, useState } from 'react';
 
-const AppContext = createContext();
+export const AppContext = createContext();
 
-const AppProvider = ({ children }) => {
+const AppProvider = ({children}) => {
   const [isUserLogged, setIsUserLogged] = useState(false);
 
   const toggleLoggedState = () => setIsUserLogged(prevValue => !prevValue);
 
-  returt (
+  return (
     <AppContext.Provider value={{ isUserLogged, toggleLoggedState }}>
       {children}
     </AppContext.Provider>
