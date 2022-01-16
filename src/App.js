@@ -3,21 +3,17 @@ import React, { useState } from 'react';
 import UserInfo from './UserInfo';
 import Button from './Button';
 
-import { AppContext, defaultObject } from './AppContent';
+import { AppProvider } from './AppContent';
 
 import './App.css';
 
 const App = () => {
-  const [isUserLogged, setIsUserLogged] = useState(defaultObject.isUserLogged);
-
-  const toggleLoggedState = () => setIsUserLogged(prevValue => !prevValue);
-
   return (
     <div>
-      <AppContext.Provider value={{ isUserLogged, toggleLoggedState }}>
+      <AppProvider>
         <UserInfo />
         <Button />
-      </AppContext.Provider>
+      </AppProvider>
     </div>
   );
 }
